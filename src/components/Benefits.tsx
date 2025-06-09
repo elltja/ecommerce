@@ -19,24 +19,6 @@ const BENEFITS = [
   },
 ];
 
-const BENEFITS_LIST = [
-  {
-    icon: '/test-images/undraw_1.svg',
-    alt: 'Secure Payment',
-    label: 'Secure Payment',
-  },
-  {
-    icon: '/test-images/undraw_2.svg',
-    alt: '24/7 Support',
-    label: '24/7 Support',
-  },
-  {
-    icon: '/test-images/undraw_3.svg',
-    alt: 'Easy Returns',
-    label: 'Easy Returns',
-  },
-];
-
 export function Benefits() {
   return (
     <section className='flex w-full flex-col gap-10 bg-white p-8 md:p-16'>
