@@ -2,9 +2,14 @@
 
 @theme {
   --font-sans:
-    var(--font-lato), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    var(--font-figtree), ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --color-primary: #00a86b;
   --color-primary-hover: #468f74;
   --color-bg: #e8f6f3;
+  --color-foreground: #2e3835;
+}
+
+body {
+  @apply bg-bg text-foreground;
 }

@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 export function Hero() {
   return (
-    <section className='flex h-[65vh]'>
-      <div className='relative flex-1 p-10'>
+    <section className='flex'>
+      <div className='relative flex-1'>
         <Image
           src='/test-images/flexible_img_2x_15331e25-75fc-49ec-9a70-8d17f78bcc33.webp'
           fill
@@ -13,8 +13,8 @@ export function Hero() {
           className='object-cover'
         />
       </div>
-      <div className='flex flex-1 items-center p-10'>
-        <div className='flex flex-col gap-6'>
+      <div className='flex flex-1 items-center bg-white p-10'>
+        <div className='my-25 flex flex-col gap-6'>
           <div>
             <p className='my-5 text-xl font-semibold text-[#00db8b]'>
               Presenting ECOM.
