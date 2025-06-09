@@ -6,25 +6,29 @@ import { LanguageSelector } from './LanguageSelector';
 
 export function Topbar() {
   return (
-    <header className='bg-bg w-full shadow-sm'>
-      <div className='flex items-center justify-between px-6 py-5 lg:px-24'>
-        <div className='flex items-center gap-4'>
-          <Logo />
-        </div>
-        <div className='flex items-center gap-4'>
-          <Moon
-            className='hover:text-primary size-5 cursor-pointer transition-colors'
-            aria-label='Toggle dark mode'
-          />
-          <LanguageSelector />
-          <Link href='#' passHref className='hover:text-primary'>
-            <User />
-          </Link>
-          <Cart quantity={1} />
-          <MobileMenu className='hover:text-primary' />
-        </div>
-      </div>
+    <header className='bg-bg flex w-full items-center justify-between px-6 py-5 shadow-sm lg:px-24'>
+      <Logo />
+      <Actions />
     </header>
+  );
+}
+
+function Actions() {
+  return (
+    <div className='flex items-center gap-4'>
+      <div className='invisible flex items-center gap-4 md:visible'>
+        <Moon
+          className='hover:text-primary size-5 cursor-pointer transition-colors'
+          aria-label='Toggle dark mode'
+        />
+        <LanguageSelector />
+        <Link href='#' passHref className='hover:text-primary'>
+          <User />
+        </Link>
+        <Cart quantity={1} />
+      </div>
+      <MobileMenu className='hover:tex t-primary md:invisible' />
+    </div>
   );
 }
 
