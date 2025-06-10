@@ -50,7 +50,7 @@ function BenefitSection({
     >
       <div className='flex flex-1 items-center p-6 md:p-10'>
         <div className='flex max-w-xl flex-col gap-6'>
-          <h2 className='mb-2 text-3xl font-bold text-[#2e3835] md:text-4xl'>
+          <h2 className='text-title mb-2 text-3xl font-bold md:text-4xl'>
             {title}
           </h2>
           <span className='bg-primary h-1.5 w-1/4 rounded md:w-1/3'></span>

@@ -1,4 +1,4 @@
-import { Moon, ShoppingCartIcon, User } from 'lucide-react';
+import { ShoppingCartIcon, User } from 'lucide-react';
 import { Logo } from './Logo';
 import { MobileMenu } from './MobileMenu';
 import Link from 'next/link';
@@ -17,10 +17,6 @@ function Actions() {
   return (
     <div className='flex items-center gap-4'>
       <div className='invisible flex items-center gap-4 md:visible'>
-        <Moon
-          className='hover:text-primary size-5 cursor-pointer transition-colors'
-          aria-label='Toggle dark mode'
-        />
         <LanguageSelector />
         <Link href='#' passHref className='hover:text-primary'>
           <User />

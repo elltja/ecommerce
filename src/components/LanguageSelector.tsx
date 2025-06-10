@@ -6,6 +6,7 @@ import {
   ListboxOption,
   ListboxOptions,
 } from '@headlessui/react';
+import { Globe } from 'lucide-react';
 import { useUrlParam } from '~/hooks/useUrlParam';
 
 const languages = [
@@ -21,6 +22,7 @@ export function LanguageSelector() {
       <ListboxButton className='hover:text-primary flex cursor-pointer items-center gap-1 p-1 outline-none'>
         {({ open }) => (
           <>
+            <Globe className='mx-1 size-4.5' />
             {languages.find((l) => l.code === (selected ?? 'en'))?.name}
             <svg
               width='20'

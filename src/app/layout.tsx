@@ -1,19 +1,19 @@
-import '~/styles/globals.css';
+import './globals.css';
 
 import { type Metadata } from 'next';
 import {
-  Figtree,
+  // Figtree,
   // Fira_Sans,
   // Inter,
   // Lato,
-  // Mulish
+  Mulish,
 } from 'next/font/google';
 
-export const figtree = Figtree({
-  subsets: ['latin'],
-  variable: '--font-figtree',
-  weight: '400',
-});
+// export const figtree = Figtree({
+//   subsets: ['latin'],
+//   variable: '--font-figtree',
+//   weight: '400',
+// });
 
 // export const firaSans = Fira_Sans({
 //   subsets: ['latin'],
@@ -33,11 +33,11 @@ export const figtree = Figtree({
 //   weight: '400',
 // });
 
-// export const mulish = Mulish({
-//   subsets: ['latin'],
-//   variable: '--font-mulish',
-//   weight: '400',
-// });
+export const mulish = Mulish({
+  subsets: ['latin'],
+  variable: '--font-mulish',
+  weight: '400',
+});
 
 export const metadata: Metadata = {
   title: 'Ecom',
@@ -49,7 +49,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang='en' className={`${figtree.variable}`}>
+    <html lang='en' className={`${mulish.variable}`}>
       <body>{children}</body>
     </html>
   );

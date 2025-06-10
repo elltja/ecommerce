@@ -30,10 +30,10 @@ function HeroContent() {
     <div className='flex flex-1 items-center bg-white p-10'>
       <div className='flex flex-col items-center gap-6 sm:items-start lg:my-25'>
         <div>
-          <p className='my-5 text-lg font-semibold text-[#00db8b] lg:text-xl'>
+          <p className='text-primary my-5 text-lg font-semibold lg:text-xl'>
             Presenting ECOM.
           </p>
-          <h1 className='w-full text-4xl font-medium text-[#586e66] lg:text-6xl'>
+          <h1 className='text-title-main w-full text-4xl font-medium lg:text-6xl'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </h1>
         </div>
