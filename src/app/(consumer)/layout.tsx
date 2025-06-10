@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { TopBanner } from '~/components/Banner';
+import { Footer } from '~/components/Footer';
 import { Topbar } from '~/components/Topbar';
 
 export default function ConsumerLayout({ children }: { children: ReactNode }) {
@@ -8,6 +9,7 @@ export default function ConsumerLayout({ children }: { children: ReactNode }) {
       <TopBanner />
       <Topbar />
       {children}
+      <Footer />
     </>
   );
 }

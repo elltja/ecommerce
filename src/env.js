@@ -13,6 +13,26 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(['development', 'test', 'production'])
       .default('development'),
+    EMAIL_SERVER_HOST:
+      process.env.NODE_ENV === 'production'
+        ? z.string()
+        : z.string().optional(),
+    EMAIL_SERVER_PORT:
+      process.env.NODE_ENV === 'production'
+        ? z.string()
+        : z.string().optional(),
+    EMAIL_SERVER_USER:
+      process.env.NODE_ENV === 'production'
+        ? z.string()
+        : z.string().optional(),
+    EMAIL_SERVER_PASSWORD:
+      process.env.NODE_ENV === 'production'
+        ? z.string()
+        : z.string().optional(),
+    EMAIL_FROM:
+      process.env.NODE_ENV === 'production'
+        ? z.string()
+        : z.string().optional(),
   },
 
   client: {},
@@ -23,6 +43,11 @@ export const env = createEnv({
     AUTH_GITHUB_SECRET: process.env.AUTH_GITHUB_SECRET,
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
+    EMAIL_SERVER_HOST: process.env.EMAIL_SERVER_HOST,
+    EMAIL_SERVER_PORT: process.env.EMAIL_SERVER_PORT,
+    EMAIL_SERVER_USER: process.env.EMAIL_SERVER_USER,
+    EMAIL_SERVER_PASSWORD: process.env.EMAIL_SERVER_PASSWORD,
+    EMAIL_FROM: process.env.EMAIL_FROM,
   },
 
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,

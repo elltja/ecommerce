@@ -37,10 +37,12 @@ function SignUpAction() {
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga
         consequatur dicta, laboriosam est voluptatum sapiente?
       </p>
-      <Button className='bg-primary hover:bg-primary-hover my-5 flex w-fit cursor-pointer items-center gap-2 rounded-full px-10 py-3 font-semibold text-white transition-colors duration-300 lg:px-25'>
-        Sign Up
-        <ArrowRightIcon className='size-5' />
-      </Button>
+      <Link passHref href='/account/auth'>
+        <Button className='bg-primary hover:bg-primary-hover my-5 flex w-fit cursor-pointer items-center gap-2 rounded-full px-10 py-3 font-semibold text-white transition-colors duration-300 lg:px-25'>
+          Sign Up
+          <ArrowRightIcon className='size-5' />
+        </Button>
+      </Link>
     </div>
   );
 }
