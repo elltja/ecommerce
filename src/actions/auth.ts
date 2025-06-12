@@ -22,6 +22,10 @@ export async function emailSignIn(
     return { error: 'Please provide a valid email address.' };
   }
 
-  await signIn('email', { email: email.trim() });
+  await signIn('resend', {
+    email: email.trim(),
+    callbackUrl: '/account/auth',
+    redirect: false,
+  });
   return { error: null };
 }

@@ -1,10 +1,10 @@
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { type DefaultSession, type NextAuthConfig } from 'next-auth';
 import GitHub from 'next-auth/providers/github';
-import Email from 'next-auth/providers/nodemailer';
+import Resend from 'next-auth/providers/resend';
 import { env } from '~/env';
-
 import { db } from '~/server/db';
+import { sendVerificationMail } from '~/services/resend/resend';
 
 export type OAuthProvider = 'github' | 'google';
 
@@ -19,16 +19,16 @@ declare module 'next-auth' {
 export const authConfig = {
   providers: [
     GitHub,
-    Email({
-      server: {
-        host: env.EMAIL_SERVER_HOST,
-        port: Number(env.EMAIL_SERVER_PORT),
-        auth: {
-          user: env.EMAIL_SERVER_USER,
-          pass: env.EMAIL_SERVER_PASSWORD,
-        },
+    Resend({
+      from: 'onboarding@resend.dev',
+      apiKey: env.RESEND_API_KEY,
+      async sendVerificationRequest({ url, identifier }) {
+        if (env.SKIP_EMAIL_VERIFICATION) {
+          console.log('Verification URL:', url);
+          return;
+        }
+        await sendVerificationMail({ url, to: identifier });
       },
-      from: env.EMAIL_FROM,
     }),
   ],
   adapter: PrismaAdapter(db),
@@ -40,8 +40,5 @@ export const authConfig = {
         id: user.id,
       },
     }),
-  },
-  pages: {
-    signIn: '/login',
   },
 } satisfies NextAuthConfig;
