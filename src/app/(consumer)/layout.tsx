@@ -8,7 +8,7 @@ export default function ConsumerLayout({ children }: { children: ReactNode }) {
     <>
       <TopBanner />
       <Topbar />
-      {children}
+      <main>{children}</main>
       <Footer />
     </>
   );
