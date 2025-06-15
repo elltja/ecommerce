@@ -1,6 +1,6 @@
 import { redirect } from '~/i18n/navigation';
 import type { ReactNode } from 'react';
-import { canAccessSellerPages } from '~/permissions/seller';
+import { canAccessSellerPages } from '~/permissions/general';
 import { auth } from '~/server/auth';
 import { getLocale } from 'next-intl/server';
 import { SideBar } from '~/components/seller/Sidebar';

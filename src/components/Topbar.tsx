@@ -4,7 +4,7 @@ import { MobileMenu } from './MobileMenu';
 import { Link } from '~/i18n/navigation';
 import { LanguageSelector } from './LanguageSelector';
 import { auth } from '~/server/auth';
-import { canAccessSellerPages } from '~/permissions/seller';
+import { canAccessSellerPages } from '~/permissions/general';
 import { Button } from '@headlessui/react';
 
 export function Topbar() {
