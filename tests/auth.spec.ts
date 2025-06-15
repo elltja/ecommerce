@@ -5,6 +5,8 @@ import {
   createSession,
 } from './helpers/auth';
 
+const LOCALE = 'en';
+
 test.describe('unauthenticated user', () => {
   test.beforeEach(async ({ context }) => {
     await context.clearCookies();
@@ -19,7 +21,7 @@ test.describe('unauthenticated user', () => {
     page,
   }) => {
     await page.goto('/seller');
-    await expect(page).toHaveURL('/');
+    await expect(page).toHaveURL(`${LOCALE}`);
   });
 });
 
@@ -34,7 +36,7 @@ test.describe('authenticated user', () => {
     page,
   }) => {
     await page.goto('/seller');
-    await expect(page).toHaveURL('/');
+    await expect(page).toHaveURL(`${LOCALE}`);
   });
   test.afterEach(async () => {
     if (userId) await cleanUpTestUser(userId);
@@ -50,7 +52,7 @@ test.describe('authenticated admin user', () => {
   });
   test('can access seller page', async ({ page }) => {
     await page.goto('/seller');
-    await expect(page).toHaveURL('/seller');
+    await expect(page).toHaveURL(`${LOCALE}/seller`);
   });
   test.afterEach(async () => {
     if (userId) await cleanUpTestUser(userId);
