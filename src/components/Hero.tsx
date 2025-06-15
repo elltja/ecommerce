@@ -1,5 +1,6 @@
 import { Button } from '@headlessui/react';
 import { ArrowRightIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 export function Hero() {
@@ -26,6 +27,7 @@ function HeroImage() {
 }
 
 function HeroContent() {
+  const t = useTranslations();
   return (
     <div className='flex flex-1 items-center bg-white p-10'>
       <div className='flex flex-col items-center gap-6 sm:items-start lg:my-25'>
@@ -34,7 +36,10 @@ function HeroContent() {
             Presenting ECOM.
           </p>
           <h1 className='text-title-main w-full text-4xl font-medium lg:text-6xl'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            {
+              /* Lorem ipsum dolor sit amet consectetur adipisicing elit. */
+              t('homePage.title')
+            }
           </h1>
         </div>
         <p className='text-md text-[#23302b] sm:w-8/12 md:text-lg lg:w-10/12 lg:text-xl'>

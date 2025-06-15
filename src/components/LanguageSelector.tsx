@@ -7,12 +7,14 @@ import {
   ListboxOptions,
 } from '@headlessui/react';
 import { Globe } from 'lucide-react';
-import { Suspense } from 'react';
-import { useUrlParam } from '~/hooks/useUrlParam';
+import { useLocale } from 'next-intl';
+import { Suspense, useTransition } from 'react';
+import { usePathname, useRouter } from '~/i18n/navigation';
 
 const languages = [
   { code: 'en', name: 'English' },
   { code: 'es', name: 'Spanish' },
+  { code: 'sv', name: 'Swedish' },
 ];
 
 export function LanguageSelector() {
@@ -24,30 +26,30 @@ export function LanguageSelector() {
 }
 
 function SuspenseBoundary() {
-  const [selected, setSelected] = useUrlParam('lang');
+  const locale = useLocale();
+  const router = useRouter();
+  const [, startTransation] = useTransition();
+  const pathname = usePathname();
+
+  function onSelectChange(nextLocale: string) {
+    startTransation(() => {
+      router.replace(
+        {
+          pathname,
+        },
+        { locale: nextLocale },
+      );
+    });
+  }
 
   return (
-    <Listbox value={selected} onChange={(code: string) => setSelected(code)}>
+    <Listbox defaultValue='en' onChange={onSelectChange}>
       <ListboxButton className='hover:text-primary flex cursor-pointer items-center gap-1 p-1 outline-none'>
         {({ open }) => (
           <>
             <Globe className='mx-1 size-4.5' />
-            {languages.find((l) => l.code === (selected ?? 'en'))?.name}
-            <svg
-              width='20'
-              height='20'
-              className='inline-block'
-              fill='none'
-              stroke='currentColor'
-              strokeWidth='2'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            >
-              <polyline
-                points='6 12 10 8 14 12'
-                transform={open ? 'rotate(180 10 10)' : undefined}
-              />
-            </svg>
+            {languages.find((l) => l.code === (locale ?? 'en'))?.name}
+            <ArrowSvgIcon open={open} />
           </>
         )}
       </ListboxButton>
@@ -66,5 +68,25 @@ function SuspenseBoundary() {
         ))}
       </ListboxOptions>
     </Listbox>
+  );
+}
+
+function ArrowSvgIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      width='20'
+      height='20'
+      className='inline-block'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    >
+      <polyline
+        points='6 12 10 8 14 12'
+        transform={open ? 'rotate(180 10 10)' : undefined}
+      />
+    </svg>
   );
 }

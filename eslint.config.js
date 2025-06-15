@@ -34,6 +34,24 @@ export default tseslint.config(
         'error',
         { checksVoidReturn: { attributes: false } },
       ],
+      'no-restricted-imports': [
+        'error',
+        {
+          name: 'next/link',
+          message: 'Please import from "@/i18n/navigation" instead',
+          importNames: ['default'],
+        },
+        {
+          name: 'next/navigation',
+          message: 'Please import from "@/i18n/navigation" instead',
+          importNames: [
+            'redirect',
+            'permanentRedirect',
+            'useRouter',
+            'usePathname',
+          ],
+        },
+      ],
     },
   },
   {

@@ -1,7 +1,8 @@
-import { redirect } from 'next/navigation';
+import { redirect } from '~/i18n/navigation';
 import type { ReactNode } from 'react';
 import { canAccessSellerPages } from '~/permissions/seller';
 import { auth } from '~/server/auth';
+import { getLocale } from 'next-intl/server';
 
 export default async function SellerLayout({
   children,
@@ -9,9 +10,9 @@ export default async function SellerLayout({
   children: ReactNode;
 }) {
   const session = await auth();
-
+  const locale = await getLocale();
   if (!canAccessSellerPages({ role: session?.user.role })) {
-    redirect('/');
+    redirect({ href: '/', locale });
   }
   return (
     <>

@@ -1,7 +1,7 @@
 import { ShoppingCartIcon, User } from 'lucide-react';
 import { Logo } from './Logo';
 import { MobileMenu } from './MobileMenu';
-import Link from 'next/link';
+import { Link } from '~/i18n/navigation';
 import { LanguageSelector } from './LanguageSelector';
 
 export function Topbar() {
