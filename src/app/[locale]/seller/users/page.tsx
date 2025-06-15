@@ -7,26 +7,28 @@ import { db } from '~/server/db';
 
 export default function UsersPage() {
   return (
-    <table className='w-full table-fixed overflow-hidden'>
-      <thead className='text-left text-sm text-gray-900'>
-        <tr>
-          <th className='w-2/3 truncate px-4 py-3 font-medium md:w-2/5'>
-            Name
-          </th>
-          <th className='w-2/3 truncate px-4 py-3 font-medium md:w-2/5'>
-            Email
-          </th>
-          <th className='w-2/3 truncate px-4 py-3 font-medium md:w-2/5'>
-            Role
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <Suspense fallback={<UserListItemSkeleton />}>
-          <SuspendedUsers />
-        </Suspense>
-      </tbody>
-    </table>
+    <>
+      <table className='w-full table-fixed overflow-hidden'>
+        <thead className='text-left text-sm text-gray-900'>
+          <tr>
+            <th className='w-2/3 truncate px-4 py-3 font-medium md:w-2/5'>
+              Name
+            </th>
+            <th className='w-2/3 truncate px-4 py-3 font-medium md:w-2/5'>
+              Email
+            </th>
+            <th className='w-2/3 truncate px-4 py-3 font-medium md:w-2/5'>
+              Role
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <Suspense fallback={<UserListItemSkeleton />}>
+            <SuspendedUsers />
+          </Suspense>
+        </tbody>
+      </table>
+    </>
   );
 }
 

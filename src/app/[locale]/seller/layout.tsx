@@ -22,7 +22,7 @@ export default async function SellerLayout({
     <div>
       <TopBar />
       <div className='flex'>
-        <SideBar />
+        <SideBar userRole={session?.user.role} />
         <main className='flex-1'>{children}</main>
       </div>
     </div>
