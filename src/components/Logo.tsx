@@ -20,7 +20,7 @@ export function Logo({
         alt='Logo'
         width={width}
         height={height}
-        className='object-contain'
+        className='h-[40px] min-w-[50px] object-contain'
       />
     </Link>
   );
