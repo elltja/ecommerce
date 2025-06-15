@@ -3,6 +3,9 @@ import { Logo } from './Logo';
 import { MobileMenu } from './MobileMenu';
 import { Link } from '~/i18n/navigation';
 import { LanguageSelector } from './LanguageSelector';
+import { auth } from '~/server/auth';
+import { canAccessSellerPages } from '~/permissions/seller';
+import { Button } from '@headlessui/react';
 
 export function Topbar() {
   return (
@@ -13,12 +16,21 @@ export function Topbar() {
   );
 }
 
-function Actions() {
+async function Actions() {
+  const session = await auth();
+  const hasSellerAccess = canAccessSellerPages({ role: session?.user.role });
   return (
     <div className='flex items-center gap-4'>
       <div className='invisible flex items-center gap-4 md:visible'>
+        {hasSellerAccess && (
+          <Link passHref href='/seller'>
+            <Button className='bg-primary hover:bg-primary-hover text-bg cursor-pointer rounded-full px-5 py-1'>
+              Seller dashboard
+            </Button>
+          </Link>
+        )}
         <LanguageSelector />
-        <Link href='#' passHref className='hover:text-primary'>
+        <Link href='/account/auth' passHref className='hover:text-primary'>
           <User />
         </Link>
         <Cart quantity={1} />
