@@ -43,8 +43,11 @@ export function useProductForm(
       message: string;
       errors?: FormErrors;
     };
-    if (responseData.errors) setErrors(responseData.errors);
-    if (onSubmitted) onSubmitted();
+    if (responseData.errors) {
+      setErrors(responseData.errors);
+    } else if (onSubmitted) {
+      onSubmitted();
+    }
   }
   return { errors, handleImageChange, onSubmit, imagePreviews };
 }
