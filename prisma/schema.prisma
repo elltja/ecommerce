@@ -9,10 +9,10 @@ datasource db {
 
 model Account {
     id                       String  @id @default(cuid())
-    userId                   String
+    userId                   String  @map("user_id")
     type                     String
     provider                 String
-    providerAccountId        String
+    providerAccountId        String  @map("provider_account_id")
     refresh_token            String?
     access_token             String?
     expires_at               Int?
@@ -24,30 +24,40 @@ model Account {
     refresh_token_expires_in Int?
 
     @@unique([provider, providerAccountId])
+    @@map("accounts")
 }
 
 model Session {
     id           String   @id @default(cuid())
-    sessionToken String   @unique
-    userId       String
+    sessionToken String   @unique @map("session_token")
+    userId       String   @map("user_id")
     expires      DateTime
     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map("sessions")
 }
 
 enum UserRole {
     USER
     ADMIN
+
+    @@map("user_role")
 }
 
 model User {
-    id            String    @id @default(cuid())
-    name          String?
-    email         String?   @unique
-    emailVerified DateTime?
-    image         String?
-    role          UserRole  @default(USER)
-    accounts      Account[]
-    sessions      Session[]
+    id              String    @id @default(cuid())
+    name            String?
+    email           String?   @unique
+    emailVerified   DateTime? @map("email_verified")
+    image           String?
+    role            UserRole  @default(USER)
+    createdAt       DateTime  @default(now())
+    updatedAt       DateTime  @updatedAt
+    accounts        Account[]
+    sessions        Session[]
+    createdProducts Product[]
+
+    @@map("users")
 }
 
 model VerificationToken {
@@ -56,4 +66,31 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+    @@map("verification_tokens")
+}
+
+model Product {
+    id           String         @id @default(cuid())
+    title        String
+    description  String
+    slug         String         @unique
+    priceInCents Int            @map("price_in_cents")
+    createdAt    DateTime       @default(now())
+    updatedAt    DateTime       @updatedAt
+    createdById  String         @map("created_by_id")
+    createdBy    User           @relation(fields: [createdById], references: [id], onDelete: Cascade)
+    images       ProductImage[]
+
+    @@map("products")
+}
+
+model ProductImage {
+    id        String  @id @default(cuid())
+    url       String
+    altText   String?
+    productId String
+    product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+    position  Int     @default(0)
+
+    @@map("product_images")
 }

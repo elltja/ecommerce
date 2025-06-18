@@ -1,8 +1,6 @@
 import { Suspense } from 'react';
-import {
-  UserListItem,
-  UserListItemSkeleton,
-} from '~/components/seller/UserListItem';
+import { TableSkeleton } from '~/components/seller/TableSkeleton';
+import { UserTableRow } from '~/components/seller/UserTableRow';
 import { db } from '~/server/db';
 
 export default function UsersPage() {
@@ -23,7 +21,7 @@ export default function UsersPage() {
           </tr>
         </thead>
         <tbody>
-          <Suspense fallback={<UserListItemSkeleton />}>
+          <Suspense fallback={<TableSkeleton />}>
             <SuspendedUsers />
           </Suspense>
         </tbody>
@@ -34,7 +32,7 @@ export default function UsersPage() {
 
 async function SuspendedUsers() {
   const users = await getUsers();
-  return users.map((user) => <UserListItem key={user.id} user={user} />);
+  return users.map((user) => <UserTableRow key={user.id} user={user} />);
 }
 
 function getUsers() {
