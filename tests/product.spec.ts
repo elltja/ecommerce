@@ -1,4 +1,4 @@
-import test from '@playwright/test';
+import test, { expect } from '@playwright/test';
 import { cleanUpTestUser, createAdminSession } from './helpers/auth';
 import { cleanUpTestProduct, getUniqueSlug } from './helpers/product';
 
@@ -27,6 +27,10 @@ test.describe('create product', () => {
       page.waitForURL(`/${LOCALE}/seller/products`),
       page.click('button[type="submit"]'),
     ]);
+    await page.waitForSelector('[data-test-id="product-table-row"]');
+    await expect(
+      page.locator('[data-test-id="product-slug"]').filter({ hasText: slug }),
+    ).toBeVisible();
   });
 
   test.afterEach(async () => {
