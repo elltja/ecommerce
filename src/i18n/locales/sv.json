@@ -1,5 +1,67 @@
 {
-    "homePage" : {
-        "title": "Lorem ipsum dolor sit amet consectetur adipisicing. Svenska"
+  "homePage": {
+    "hero": {
+      "subtitle": "Presenterar ECOM.",
+      "title": "Lorem ipsum dolor sit amet consectetur adipisicing. English",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur pariatur consequuntur voluptate quasi ea accusamus fugiat voluptatibus architecto consectetur",
+      "CTA": "SHOPPA MED 50% RABATT"
+    },
+    "features": {
+      "title": "Upptäck Funktionerna",
+      "description": "Utforska de avancerade funktionerna som är utformade för att förbättra din upplevelse. Våra produkter kombinerar innovation, kvalitet och prestanda för att möta dina behov.",
+      "bulletPoints": [
+        "Högprecisionssensorer för exakt spårning",
+        "Lätt och bekväm design",
+        "Lång batteritid",
+        "Sömlös Bluetooth-anslutning",
+        "Vattentålig för alla väder"
+      ]
+    },
+    "benefits": [
+      {
+        "title": "Snabb Leverans",
+        "description": "Få dina produkter levererade snabbt och säkert till din dörr med våra pålitliga fraktpartners.",
+        "imageAlt": "Illustration av snabb leverans"
+      },
+      {
+        "title": "Kvalitetssäkring",
+        "description": "Vi garanterar högsta kvalitetsstandard för alla våra produkter, så att du kan känna dig trygg med varje köp.",
+        "imageAlt": "Illustration av kvalitetssäkring"
+      }
+    ]
+  },
+  "layouts": {
+    "header": {
+      "bannerMessage": "SISTA CHANSEN ATT SPARA STORT!"
+    },
+    "footer": {
+      "title": "Lorem ipsum dolor sit amet.",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga consequatur dicta, laboriosam est voluptatum sapiente?",
+      "signUp": "Registrera dig",
+      "links": [
+        "Hem",
+        "Om oss",
+        "Kontakt",
+        "Blogg",
+        "Karriär",
+        "Frakt och returer",
+        "Support",
+        "Vanliga frågor",
+        "Orderstatus",
+        "Integritetspolicy",
+        "Användarvillkor",
+        "Tillgänglighet",
+        "Webbplatskarta"
+      ],
+      "emailUs": "Maila oss"
     }
+  },
+  "authPage": {
+    "title": "Logga In",
+    "continueWithProvider": "Fortsätt med {provider}",
+    "emailForm": {
+      "placeholder": "du@example.com",
+      "action": "Fortsätt"
+    }
+  }
 }

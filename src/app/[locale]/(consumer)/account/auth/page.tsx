@@ -3,13 +3,15 @@ import Image from 'next/image';
 import { oAuthSignIn } from '~/server/actions/auth';
 import { EmailAuthForm } from '~/components/EmailAuthForm';
 import { Separator } from '~/components/Separator';
+import { useTranslations } from 'next-intl';
 
 export default function AuthPage() {
+  const t = useTranslations('authPage');
   return (
     <div className='flex h-screen w-full items-center justify-center'>
       <div>
         <h1 className='text-title-main mx-auto my-5 text-center text-2xl font-medium'>
-          Sign In
+          {t('title')}
         </h1>
         <div className='flex w-96 flex-col gap-3'>
           <OAuthButton provider='github' />
@@ -23,6 +25,7 @@ export default function AuthPage() {
 }
 
 function OAuthButton({ provider }: { provider: 'github' | 'google' }) {
+  const t = useTranslations('authPage');
   return (
     <Button
       onClick={oAuthSignIn.bind(null, provider)}
@@ -34,7 +37,7 @@ function OAuthButton({ provider }: { provider: 'github' | 'google' }) {
         width={25}
         height={25}
       />
-      Continue with {provider}
+      {t('continueWithProvider', { provider })}
     </Button>
   );
 }

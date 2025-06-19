@@ -1,25 +1,26 @@
 import Image from 'next/image';
-
-const BENEFITS = [
-  {
-    title: 'Fast Delivery',
-    description:
-      'Get your products delivered quickly and safely to your doorstep with our reliable shipping partners.',
-    image: '/test-images/5.webp',
-    imageAlt: 'Fast delivery illustration',
-    reverse: false,
-  },
-  {
-    title: 'Quality Assurance',
-    description:
-      'We ensure the highest quality standards for all our products, giving you peace of mind with every purchase.',
-    image: '/test-images/6.webp',
-    imageAlt: 'Quality assurance illustration',
-    reverse: true,
-  },
-];
+import { useTranslations } from 'next-intl';
 
 export function Benefits() {
+  const t = useTranslations('homePage.benefits');
+
+  const BENEFITS = [
+    {
+      title: t('0.title'),
+      description: t('0.description'),
+      image: '/test-images/5.webp',
+      imageAlt: t('0.imageAlt'),
+      reverse: false,
+    },
+    {
+      title: t('1.title'),
+      description: t('1.description'),
+      image: '/test-images/6.webp',
+      imageAlt: t('1.imageAlt'),
+      reverse: true,
+    },
+  ];
+
   return (
     <section className='flex w-full flex-col gap-10 bg-white p-8 md:p-16'>
       {BENEFITS.map((benefit, idx) => (

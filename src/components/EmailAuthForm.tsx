@@ -6,8 +6,10 @@ import Form from 'next/form';
 import { useActionState, useId } from 'react';
 import { emailSignIn, type FormState } from '~/server/actions/auth';
 import { LoadingTextSwap } from './LoadingTextSwap';
+import { useTranslations } from 'next-intl';
 
 export function EmailAuthForm() {
+  const t = useTranslations('authPage.emailForm');
   const [state, action, isPending] = useActionState<FormState, FormData>(
     emailSignIn,
     {
@@ -26,7 +28,7 @@ export function EmailAuthForm() {
           aria-invalid={!!state.error}
           aria-label='email'
           type='email'
-          placeholder='you@example.com'
+          placeholder={t('placeholder')}
           className='outline-none'
           id={`email-${id}`}
           name='email'
@@ -42,7 +44,7 @@ export function EmailAuthForm() {
         className='bg-primary hover:bg-primary-hover flex w-full cursor-pointer items-center justify-center gap-2 rounded-full py-3 text-center font-semibold text-white transition-colors duration-300'
         type='submit'
       >
-        <LoadingTextSwap isLoading={isPending}>Continue</LoadingTextSwap>
+        <LoadingTextSwap isLoading={isPending}>{t('action')}</LoadingTextSwap>
       </Button>
     </Form>
   );

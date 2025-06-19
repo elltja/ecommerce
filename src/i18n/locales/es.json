@@ -1,5 +1,67 @@
 {
-    "homePage" : {
-        "title": "Lorem ipsum dolor sit amet consectetur adipisicing. Espaniol"
+  "homePage": {
+    "hero": {
+      "subtitle": "Presentando ECOM.",
+      "title": "Lorem ipsum dolor sit amet consectetur adipisicing. English",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur pariatur consequuntur voluptate quasi ea accusamus fugiat voluptatibus architecto consectetur",
+      "CTA": "COMPRA CON 50% DE DESCUENTO"
+    },
+    "features": {
+      "title": "Descubre las Funciones",
+      "description": "Explora las funciones avanzadas diseñadas para mejorar tu experiencia. Nuestros productos combinan innovación, calidad y rendimiento para satisfacer tus necesidades.",
+      "bulletPoints": [
+        "Sensores de alta precisión para un seguimiento exacto",
+        "Diseño ligero y cómodo",
+        "Batería de larga duración",
+        "Conectividad Bluetooth sin interrupciones",
+        "Resistente al agua para todo tipo de clima"
+      ]
+    },
+    "benefits": [
+      {
+        "title": "Entrega Rápida",
+        "description": "Recibe tus productos rápida y seguramente en tu puerta con nuestros socios de envío confiables.",
+        "imageAlt": "Ilustración de entrega rápida"
+      },
+      {
+        "title": "Garantía de Calidad",
+        "description": "Garantizamos los más altos estándares de calidad en todos nuestros productos, dándote tranquilidad en cada compra.",
+        "imageAlt": "Ilustración de garantía de calidad"
+      }
+    ]
+  },
+  "layouts": {
+    "header": {
+      "bannerMessage": "¡ÚLTIMA OPORTUNIDAD PARA AHORRAR A LO GRANDE!"
+    },
+    "footer": {
+      "title": "Lorem ipsum dolor sit amet.",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga consequatur dicta, laboriosam est voluptatum sapiente?",
+      "signUp": "Regístrate",
+      "links": [
+        "Inicio",
+        "Sobre nosotros",
+        "Contacto",
+        "Blog",
+        "Empleos",
+        "Envíos y devoluciones",
+        "Soporte",
+        "Preguntas frecuentes",
+        "Seguimiento de pedidos",
+        "Política de privacidad",
+        "Términos del servicio",
+        "Accesibilidad",
+        "Mapa del sitio"
+      ],
+      "emailUs": "Envíanos un correo"
     }
+  },
+  "authPage": {
+    "title": "Iniciar Sesión",
+    "continueWithProvider": "Continuar con {provider}",
+    "emailForm": {
+      "placeholder": "tú@ejemplo.com",
+      "action": "Continuar"
+    }
+  }
 }

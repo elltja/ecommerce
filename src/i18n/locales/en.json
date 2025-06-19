@@ -1,5 +1,67 @@
 {
-    "homePage" : {
-        "title": "Lorem ipsum dolor sit amet consectetur adipisicing. English"
+  "homePage": {
+    "hero": {
+      "subtitle": "Presenting ECOM.",
+      "title": "Lorem ipsum dolor sit amet consectetur adipisicing. English",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur pariatur consequuntur voluptate quasi ea accusamus fugiat voluptatibus architecto consectetur",
+      "CTA": "SHOP AT 50% SALE"
+    },
+    "features": {
+      "title": "Discover the Features",
+      "description": "Explore the advanced features designed to enhance your experience. Our products combine innovation, quality, and performance to meet your needs.",
+      "bulletPoints": [
+        "High-precision sensors for accurate tracking",
+        "Lightweight and comfortable design",
+        "Long-lasting battery life",
+        "Seamless Bluetooth connectivity",
+        "Water-resistant for all-weather use"
+      ]
+    },
+    "benefits": [
+      {
+        "title": "Fast Delivery",
+        "description": "Get your products delivered quickly and safely to your doorstep with our reliable shipping partners.",
+        "imageAlt": "Fast delivery illustration"
+      },
+      {
+        "title": "Quality Assurance",
+        "description": "We ensure the highest quality standards for all our products, giving you peace of mind with every purchase.",
+        "imageAlt": "Quality assurance illustration"
+      }
+    ]
+  },
+  "layouts": {
+    "header": {
+      "bannerMessage": "LAST CHANCE TO SAVE BIG!"
+    },
+    "footer": {
+      "title": "Lorem ipsum dolor sit amet.",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga consequatur dicta, laboriosam est voluptatum sapiente?",
+      "signUp": "Sign Up",
+      "links": [
+        "Home",
+        "About us",
+        "Contact",
+        "Blog",
+        "Careers",
+        "Shipping & Returns",
+        "Support",
+        "FAQ",
+        "Order Tracking",
+        "Privacy Policy",
+        "Terms of Service",
+        "Accessibility",
+        "Sitemap"
+      ],
+      "emailUs": "Email us"
     }
+  },
+  "authPage": {
+    "title": "Sign In",
+    "continueWithProvider": "Continue with {provider}",
+    "emailForm": {
+        "placeholder": "you@example.com",
+        "action": "Continue"
+    }
+  }
 }

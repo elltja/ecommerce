@@ -3,17 +3,19 @@ import { Logo } from './Logo';
 import { Button } from '@headlessui/react';
 import type { ReactNode } from 'react';
 import { Link } from '~/i18n/navigation';
+import { useTranslations } from 'next-intl';
 
 const EMAIL_ADDRESS = 'mail@example.com';
 
 export function Footer() {
+  const t = useTranslations('layouts.footer');
   return (
     <footer className='bg-bg'>
       <div className='flex flex-col gap-5 p-10 sm:flex-row sm:justify-between'>
         <Logo />
         <div className='flex gap-2'>
           <Mail />
-          <p className='font-semibold'>Email us</p>
+          <p className='font-semibold'>{t('emailUs')}</p>
           <a className='underline' href={`mailto:${EMAIL_ADDRESS}`}>
             {EMAIL_ADDRESS}
           </a>
@@ -30,16 +32,14 @@ export function Footer() {
 }
 
 function SignUpAction() {
+  const t = useTranslations('layouts.footer');
   return (
     <div className='flex w-full flex-col gap-2 sm:w-96'>
-      <h2 className='text-xl font-semibold'>Lorem ipsum dolor sit amet.</h2>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga
-        consequatur dicta, laboriosam est voluptatum sapiente?
-      </p>
+      <h2 className='text-xl font-semibold'>{t('title')}</h2>
+      <p>{t('description')}</p>
       <Link passHref href='/account/auth'>
         <Button className='bg-primary hover:bg-primary-hover my-5 flex w-fit cursor-pointer items-center gap-2 rounded-full px-10 py-3 font-semibold text-white transition-colors duration-300 lg:px-25'>
-          Sign Up
+          {t('signUp')}
           <ArrowRightIcon className='size-5' />
         </Button>
       </Link>
@@ -48,26 +48,27 @@ function SignUpAction() {
 }
 
 function NavList() {
+  const t = useTranslations('layouts.footer');
   return (
     <nav className='flex flex-wrap gap-10'>
       <ul className='mx-5'>
-        <NavItem href=''>Home</NavItem>
-        <NavItem href=''>About us</NavItem>
-        <NavItem href=''>Contact</NavItem>
-        <NavItem href=''>Blog</NavItem>
-        <NavItem href=''>Careers</NavItem>
+        <NavItem href=''>{t('links.0')}</NavItem>
+        <NavItem href=''>{t('links.1')}</NavItem>
+        <NavItem href=''>{t('links.2')}</NavItem>
+        <NavItem href=''>{t('links.3')}</NavItem>
+        <NavItem href=''>{t('links.4')}</NavItem>
       </ul>
       <ul className='mx-5'>
-        <NavItem href=''>Shipping & Returns</NavItem>
-        <NavItem href=''>Support</NavItem>
-        <NavItem href=''>FAQ</NavItem>
-        <NavItem href=''>Order Tracking</NavItem>
+        <NavItem href=''>{t('links.5')}</NavItem>
+        <NavItem href=''>{t('links.6')}</NavItem>
+        <NavItem href=''>{t('links.7')}</NavItem>
+        <NavItem href=''>{t('links.8')}</NavItem>
       </ul>
       <ul className='mx-5'>
-        <NavItem href=''>Privacy Policy</NavItem>
-        <NavItem href=''>Terms of Service</NavItem>
-        <NavItem href=''>Accessibility</NavItem>
-        <NavItem href=''>Sitemap</NavItem>
+        <NavItem href=''>{t('links.9')}</NavItem>
+        <NavItem href=''>{t('links.10')}</NavItem>
+        <NavItem href=''>{t('links.11')}</NavItem>
+        <NavItem href=''>{t('links.12')}</NavItem>
       </ul>
     </nav>
   );

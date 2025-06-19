@@ -15,6 +15,7 @@ export const env = createEnv({
       .default('development'),
     AUTH_RESEND_KEY: z.string(),
     EMAIL_FROM: z.string(),
+    MAIN_PRODUCT_SLUG: z.string(),
   },
 
   client: {},
@@ -27,6 +28,7 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     AUTH_RESEND_KEY: process.env.AUTH_RESEND_KEY,
     EMAIL_FROM: process.env.EMAIL_FROM,
+    MAIN_PRODUCT_SLUG: process.env.MAIN_PRODUCT_SLUG,
   },
 
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
