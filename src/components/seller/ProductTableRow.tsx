@@ -21,7 +21,7 @@ export function ProductTableRow({
   return (
     <tr
       className='border-t border-gray-500/20'
-      data-test-id='product-table-row'
+      data-testid={`product-table-row-${product.id}`}
     >
       <td className='px-4 py-3 max-sm:hidden'>
         <div className='flex gap-3'>
@@ -34,7 +34,7 @@ export function ProductTableRow({
           />
           <div>
             <h3 className='font-semibold'>{product.title}</h3>
-            <p className='text-sm text-gray-500' data-test-id='product-slug'>
+            <p className='text-sm text-gray-500' data-testid='product-slug'>
               {product.slug}
             </p>
           </div>

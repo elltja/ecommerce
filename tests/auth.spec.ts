@@ -1,9 +1,5 @@
 import test, { expect } from '@playwright/test';
-import {
-  cleanUpTestUser,
-  createAdminSession,
-  createSession,
-} from './helpers/auth';
+import { cleanUpTestUser, createSession } from './helpers/auth';
 
 const LOCALE = 'en';
 
@@ -47,7 +43,7 @@ test.describe('authenticated admin user', () => {
   let userId: string;
 
   test.beforeEach(async ({ context }) => {
-    const user = await createAdminSession(context);
+    const user = await createSession(context, 'ADMIN');
     userId = user.id;
   });
   test('can access seller page', async ({ page }) => {
