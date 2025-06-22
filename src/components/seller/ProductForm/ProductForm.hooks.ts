@@ -5,30 +5,30 @@ export function useProductForm(
   initialData: InitialData | undefined,
   onSubmitted: (() => void) | undefined,
 ) {
-  const [imagePreviews, setImagePreviews] = useState<(string | null)[]>([
-    null,
-    null,
-    null,
-    null,
-  ]);
-  const [files, setFiles] = useState<(File | null)[]>([null, null, null, null]);
+  const [images, setImages] = useState<File[]>([]);
+  const [existingImageUrls, setExistingImageUrls] = useState(
+    initialData?.images.map((img) => img.url) ?? [],
+  );
   const [errors, setErrors] = useState<FormErrors>({});
 
-  function handleImageChange(index: number, file: File) {
-    const newPreviews = [...imagePreviews];
-    const newFiles = [...files];
-
-    newPreviews[index] = URL.createObjectURL(file);
-    newFiles[index] = file;
-
-    setImagePreviews(newPreviews);
-    setFiles(newFiles);
+  function handleImageChange(image: File) {
+    setImages([...images, image]);
+  }
+  function handleImageDeletion(fileOrUrl: File | string) {
+    if (typeof fileOrUrl === 'string') {
+      setExistingImageUrls((prev) => prev.filter((url) => url !== fileOrUrl));
+    }
+    setImages((prev) => prev.filter((image) => image !== image));
   }
 
   async function onSubmit(formData: FormData) {
-    files.forEach((file) => {
-      if (file instanceof File) formData.append('images', file);
+    images.forEach((image) => {
+      formData.append('images', image);
     });
+    existingImageUrls?.forEach((imageUrl) => {
+      formData.append('existingImageSources', imageUrl);
+    });
+
     const apiUrl = initialData
       ? `/api/products/edit?id=${initialData.id}`
       : '/api/products/new';
@@ -49,5 +49,12 @@ export function useProductForm(
       onSubmitted();
     }
   }
-  return { errors, handleImageChange, onSubmit, imagePreviews };
+  return {
+    errors,
+    handleImageChange,
+    onSubmit,
+    images,
+    existingImageUrls,
+    handleImageDeletion,
+  };
 }

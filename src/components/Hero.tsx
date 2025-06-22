@@ -37,7 +37,7 @@ function HeroContent() {
           <p className='text-primary my-5 text-lg font-semibold lg:text-xl'>
             {t('subtitle')}
           </p>
-          <h1 className='text-title-main w-full text-4xl font-medium lg:text-6xl'>
+          <h1 className='text-title w-full text-4xl font-medium lg:text-6xl'>
             {t('title')}
           </h1>
         </div>

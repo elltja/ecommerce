@@ -10,7 +10,7 @@ export default function AuthPage() {
   return (
     <div className='flex h-screen w-full items-center justify-center'>
       <div>
-        <h1 className='text-title-main mx-auto my-5 text-center text-2xl font-medium'>
+        <h1 className='text-title mx-auto my-5 text-center text-2xl font-medium'>
           {t('title')}
         </h1>
         <div className='flex w-96 flex-col gap-3'>

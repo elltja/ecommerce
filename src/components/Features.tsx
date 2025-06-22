@@ -7,7 +7,7 @@ export function Features() {
     <section className='bg-bg flex w-full flex-col shadow-sm lg:p-15 xl:flex-row'>
       <div className='flex flex-1 items-center p-10'>
         <div className='flex max-w-xl flex-col gap-6'>
-          <h2 className='text-title mb-2 text-4xl font-bold'>{t('title')}</h2>
+          <h2 className='mb-2 text-4xl font-bold'>{t('title')}</h2>
           <p className='text-lg leading-relaxed font-medium text-gray-700'>
             {t('description')}
           </p>

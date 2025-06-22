@@ -16,6 +16,9 @@ export const env = createEnv({
     AUTH_RESEND_KEY: z.string(),
     EMAIL_FROM: z.string(),
     MAIN_PRODUCT_SLUG: z.string(),
+    CLOUDINARY_API_KEY: z.string(),
+    CLOUDINARY_API_SECRET: z.string(),
+    CLOUDINARY_CLOUD_NAME: z.string(),
   },
 
   client: {},
@@ -29,6 +32,9 @@ export const env = createEnv({
     AUTH_RESEND_KEY: process.env.AUTH_RESEND_KEY,
     EMAIL_FROM: process.env.EMAIL_FROM,
     MAIN_PRODUCT_SLUG: process.env.MAIN_PRODUCT_SLUG,
+    CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
+    CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
+    CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
   },
 
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
