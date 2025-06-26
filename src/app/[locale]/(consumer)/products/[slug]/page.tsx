@@ -1,4 +1,8 @@
-import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { AddToCartButton } from '~/components/AddToCartButton';
+import { ProductImageDisplay } from '~/components/ProductImageDisplay';
+import { ReviewStars } from '~/components/ReviewStart';
+import { Separator } from '~/components/Separator';
 import { db } from '~/server/db';
 
 export default async function ProductPage({
@@ -9,21 +13,30 @@ export default async function ProductPage({
   const { slug } = await params;
   const product = await getProduct(slug);
 
+  if (product == null) {
+    return notFound();
+  }
+
   return (
-    <>
-      <div>
-        {product?.images.map((image) => (
-          <Image
-            key={image.id}
-            src={image.url}
-            alt={image.altText ?? product.title}
-            height={50}
-            width={50}
-          />
-        ))}
+    <div className='my-10 grid grid-cols-1 md:grid-cols-2'>
+      <ProductImageDisplay images={product?.images ?? []} />
+
+      <div className='p-5'>
+        <div className='flex flex-col gap-3'>
+          <h1 className='text-2xl font-bold'>{product?.title}</h1>
+          <ReviewStars />
+          <p className='lg:max-w-2/3'>{product?.description}</p>
+          <span className='text-2xl font-bold'>
+            ${product.priceInCents / 100}
+          </span>
+        </div>
+        <div className='my-5 lg:my-7 lg:max-w-5/6'>
+          <Separator />
+        </div>
+
+        <AddToCartButton productData={product} />
       </div>
-      <h1>{product?.title}</h1>
-    </>
+    </div>
   );
 }
 

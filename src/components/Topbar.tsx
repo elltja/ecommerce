@@ -34,7 +34,7 @@ async function Actions() {
         <Link href='/account/auth' passHref className='hover:text-primary'>
           <User />
         </Link>
-        <Cart quantity={1} />
+        <Cart />
       </div>
       <MobileMenu className='hover:tex t-primary md:invisible' />
     </div>

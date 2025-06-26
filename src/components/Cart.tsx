@@ -1,7 +1,11 @@
+'use client';
+
 import { ShoppingCartIcon } from 'lucide-react';
 import { Link } from '~/i18n/navigation';
+import { useCartStore } from '~/store/cartStore';
 
-export function Cart({ quantity }: { quantity: number }) {
+export function Cart() {
+  const quantity = useCartStore((state) => state.cart).length;
   return (
     <Link
       href='/cart'

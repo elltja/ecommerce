@@ -57,8 +57,6 @@ export async function PUT(request: NextRequest) {
   return NextResponse.json({ message: 'Successfully updated product' });
 }
 
-// -- Utilities --
-
 function parseFormFields(formData: FormData) {
   return {
     title: (formData.get('title') as string) || undefined,
