@@ -53,7 +53,7 @@ function HeroContent() {
 function CTAButton() {
   const t = useTranslations('homePage.hero');
   return (
-    <Link href={`/products/${env.MAIN_PRODUCT_SLUG}`} passHref>
+    <Link href={`/products/${env.NEXT_PUBLIC_MAIN_PRODUCT_SLUG}`} passHref>
       <Button className='bg-primary hover:bg-primary-hover my-7 flex w-fit cursor-pointer items-center gap-2 rounded-full px-10 py-3 font-semibold text-white transition-colors duration-300 lg:px-25'>
         {t('CTA')}
         <ArrowRightIcon className='size-5' />

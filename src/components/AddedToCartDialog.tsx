@@ -21,9 +21,9 @@ export function AddedToCartDialog({
         <div className='flex min-h-full items-center justify-center bg-[#0000004d]'>
           <DialogPanel
             transition
-            className='w-fit rounded-xl bg-white px-10 py-7 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0'
+            className='w-fit rounded-xl bg-white px-5 py-7 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0 sm:px-10'
           >
-            <div className='mr-25'>
+            <div className='lg:mr-25'>
               <div className='mb-5'>
                 <DialogTitle className='text-lg font-semibold'>
                   Successfully added to cart

@@ -19,7 +19,7 @@ export function AddToCartButton({
     <>
       <Button
         onClick={() => {
-          addToCart({ product: productData });
+          addToCart({ product: productData, quantity: 1 });
           setIsOpen(true);
         }}
         className='bg-primary hover:bg-primary-hover text-bg flex w-full cursor-pointer items-center justify-center gap-2 rounded-full py-3 text-lg font-semibold lg:max-w-2/3'

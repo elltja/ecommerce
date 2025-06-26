@@ -5,7 +5,9 @@ import { Link } from '~/i18n/navigation';
 import { useCartStore } from '~/store/cartStore';
 
 export function Cart() {
-  const quantity = useCartStore((state) => state.cart).length;
+  const cart = useCartStore((state) => state.cart);
+
+  const quantity = cart.reduce((total, item) => total + item.quantity, 0);
   return (
     <Link
       href='/cart'
