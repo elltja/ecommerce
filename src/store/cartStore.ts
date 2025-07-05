@@ -1,11 +1,6 @@
-import type { Product, ProductImage } from '@prisma/client';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-export type CartItem = {
-  product: Product & { images: ProductImage[] };
-  quantity: number;
-};
+import type { CartItem } from '~/lib/validators/cart';
 
 interface CartStore {
   cart: CartItem[];

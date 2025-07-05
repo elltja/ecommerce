@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import type { z } from 'zod';
 import {
-  type productSchema,
+  type productInputDataSchema,
   validateProductData,
 } from '~/lib/validators/products';
 import { canUpdateProduct } from '~/permissions/product';
@@ -66,7 +66,10 @@ function parseFormFields(formData: FormData) {
   };
 }
 
-async function updateProduct(data: z.infer<typeof productSchema>, id: string) {
+async function updateProduct(
+  data: z.infer<typeof productInputDataSchema>,
+  id: string,
+) {
   const { priceInDollars, ...productData } = data;
   const priceInCents = Math.round(priceInDollars * 100);
 

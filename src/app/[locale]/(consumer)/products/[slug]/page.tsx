@@ -21,6 +21,8 @@ export default async function ProductPage({
 function getProduct(slug: string) {
   return db.product.findUnique({
     where: { slug },
-    include: { images: { orderBy: { position: 'asc' } } },
+    include: {
+      images: { orderBy: { position: 'asc' }, omit: { productId: true } },
+    },
   });
 }

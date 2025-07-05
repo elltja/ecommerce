@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { type z } from 'zod';
 import {
-  type productSchema,
+  type productInputDataSchema,
   validateProductData,
 } from '~/lib/validators/products';
 import { canCreateProduct } from '~/permissions/product';
@@ -57,7 +57,7 @@ async function uploadFiles(files: unknown[]) {
 }
 
 async function createProduct(
-  data: z.infer<typeof productSchema>,
+  data: z.infer<typeof productInputDataSchema>,
   imageUrls: string[],
   createdById: string,
 ) {

@@ -6,11 +6,14 @@ import Form from 'next/form';
 import Image from 'next/image';
 import { env } from '~/env';
 import { Link } from '~/i18n/navigation';
+import type { CartItem } from '~/lib/validators/cart';
 import { checkout } from '~/server/actions/checkout';
-import { useCartStore, type CartItem } from '~/store/cartStore';
+import { useCartStore } from '~/store/cartStore';
 
 export default function CartPage() {
   const { cart, totalPrice } = useCartStore();
+
+  console.log(cart);
 
   if (cart.length < 1) {
     return (

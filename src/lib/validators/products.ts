@@ -1,13 +1,6 @@
 import { z } from 'zod';
 
-type Errors = {
-  title?: string;
-  slug?: string;
-  priceInDollars?: string;
-  description?: string;
-};
-
-export const productSchema = z.object({
+export const productInputDataSchema = z.object({
   title: z.string({ required_error: 'Title is required' }),
   slug: z
     .string({ required_error: 'Slug is required' })
@@ -21,10 +14,17 @@ export const productSchema = z.object({
   description: z.string({ required_error: 'Description is required' }),
 });
 
+type Errors = {
+  title?: string;
+  slug?: string;
+  priceInDollars?: string;
+  description?: string;
+};
+
 export function validateProductData(
-  fields: Partial<z.input<typeof productSchema>>,
+  fields: Partial<z.input<typeof productInputDataSchema>>,
 ) {
-  const { success, data, error } = productSchema.safeParse(fields);
+  const { success, data, error } = productInputDataSchema.safeParse(fields);
 
   if (!success) {
     const errors: Errors = {};

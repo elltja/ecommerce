@@ -1,14 +1,18 @@
 'use server';
 
-import type { CartItem } from '~/store/cartStore';
+import { validateCartItems } from '~/lib/validators/cart';
 
 export async function checkout(formData: unknown) {
   if (!(formData instanceof FormData)) {
     throw new Error('Invalid request');
   }
-  const itemsString = formData.get('items') as string;
+  const itemsString = formData.get('items');
 
-  const items = JSON.parse(itemsString) as CartItem[];
+  if (typeof itemsString !== 'string') {
+    throw new Error('Invalid request data');
+  }
 
-  console.log(items);
+  const rawItems = JSON.parse(itemsString) as unknown;
+
+  const items = validateCartItems(rawItems);
 }
