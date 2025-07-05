@@ -56,6 +56,7 @@ model User {
     accounts        Account[]
     sessions        Session[]
     createdProducts Product[]
+    orders          Order[]   @relation("CustomerOrders")
 
     @@map("users")
 }
@@ -70,16 +71,18 @@ model VerificationToken {
 }
 
 model Product {
-    id           String         @id @default(cuid())
+    id           String   @id @default(cuid())
     title        String
     description  String
-    slug         String         @unique
-    priceInCents Int            @map("price_in_cents")
-    createdAt    DateTime       @default(now())
-    updatedAt    DateTime       @updatedAt
-    createdById  String         @map("created_by_id")
-    createdBy    User           @relation(fields: [createdById], references: [id], onDelete: Cascade)
-    images       ProductImage[]
+    slug         String   @unique
+    priceInCents Int      @map("price_in_cents")
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    createdById  String   @map("created_by_id")
+
+    createdBy  User           @relation(fields: [createdById], references: [id], onDelete: Cascade)
+    images     ProductImage[]
+    orderItems OrderItem[]
 
     @@map("products")
 }
@@ -93,4 +96,37 @@ model ProductImage {
     position  Int     @default(0)
 
     @@map("product_images")
+}
+
+enum OrderStatus {
+    PLACED
+    SHIPPED
+    COMPLETED
+
+    @@map("order_status")
+}
+
+model Order {
+    id                 String      @id @default(cuid())
+    customerEmail      String      @map("customer_email")
+    customerId         String?     @map("user_id")
+    createdAt          DateTime    @default(now())
+    updatedAt          DateTime    @updatedAt
+    status             OrderStatus @default(PLACED)
+    totalAmountInCents Int         @map("total_amount_in_cents")
+    paymentIntentId    String?     @map("payment_intent_id")
+    shippingAddress    Json        @map("shipping_address")
+
+    items    OrderItem[]
+    customer User?       @relation("CustomerOrders", fields: [customerId], references: [id])
+}
+
+model OrderItem {
+    id        String  @id @default(cuid())
+    quantity  Int
+    productId String  @map("product_id")
+    orderId   String? @map("order_id")
+
+    product Product @relation(fields: [productId], references: [id])
+    order   Order?  @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }

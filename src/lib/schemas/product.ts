@@ -12,7 +12,7 @@ export const productSchema = z.object({
   images: z
     .array(
       z.object({
-        altText: z.string().optional(),
+        altText: z.string().nullable(),
         id: z.string(),
         position: z.number(),
         url: z.string().url(),
