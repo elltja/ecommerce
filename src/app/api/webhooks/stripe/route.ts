@@ -8,19 +8,29 @@ import { stripe } from '~/server/stripe';
 import { getShippingRate } from '~/server/stripe/utils';
 
 export async function POST(request: NextRequest) {
-  const event = stripe.webhooks.constructEvent(
-    await request.text(),
-    request.headers.get('stripe-signature')!,
-    env.STRIPE_WEBHOOK_SECRET,
-  );
+  let event: Stripe.Event;
 
+  try {
+    const rawBody = await request.text();
+    const signature = request.headers.get('stripe-signature')!;
+    event = stripe.webhooks.constructEvent(
+      rawBody,
+      signature,
+      env.STRIPE_WEBHOOK_SECRET,
+    );
+  } catch (err) {
+    console.error('Webhook signature verification failed:', err);
+    return new Response('Invalid signature', { status: 400 });
+  }
   switch (event.type) {
     case 'checkout.session.completed':
       const session = event.data.object;
       try {
         await processStripeCheckout(session);
         return new Response(null, { status: 200 });
-      } catch {
+      } catch (error) {
+        console.error(`Webhook for event ${event.type} failed: `, error);
+
         return new Response(null, { status: 500 });
       }
     default:
@@ -32,6 +42,7 @@ async function processStripeCheckout(checkoutSession: Stripe.Checkout.Session) {
   const { metadata, success } = validateMetadata(checkoutSession.metadata);
 
   if (!success || metadata == null) {
+    console.error('Invalid metadata');
     throw new Error('Invalid metadata');
   }
 
@@ -45,7 +56,7 @@ async function processStripeCheckout(checkoutSession: Stripe.Checkout.Session) {
     email: customerDetails?.email,
     shippingRate: {
       name: shippingRate.display_name,
-      amount: shippingRate.fixed_amount,
+      amount: shippingRate.fixed_amount?.amount,
     },
     address: {
       line1: customerDetails?.address?.line1,
@@ -66,18 +77,24 @@ async function processStripeCheckout(checkoutSession: Stripe.Checkout.Session) {
     throw new Error('Missing total amount');
   }
 
-  await db.order.create({
-    data: {
-      customerEmail: shippingInformation.email,
-      paymentIntentId: paymentIntentId,
-      customerId: metadata.customerId,
-      totalAmountInCents: checkoutSession.amount_total,
-      shippingAddress: shippingInformation,
-      items: {
-        createMany: {
-          data: metadata.orderItems,
+  try {
+    await db.order.create({
+      data: {
+        customerEmail: shippingInformation.email,
+        paymentIntentId: paymentIntentId,
+        customerId: metadata.customerId,
+        totalAmountInCents: checkoutSession.amount_total,
+        shippingAddress: shippingInformation,
+        items: {
+          createMany: {
+            data: metadata.orderItems,
+          },
         },
       },
-    },
-  });
+    });
+  } catch (error) {
+    console.error('Failed to create order: ', error);
+
+    throw error;
+  }
 }

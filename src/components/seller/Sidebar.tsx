@@ -3,7 +3,7 @@
 import type { UserRole } from '@prisma/client';
 import { Box, LayoutDashboard, List, User } from 'lucide-react';
 import { Link, usePathname } from '~/i18n/navigation';
-import { canAccessUserList } from '~/permissions/users';
+import { canAccessUserList } from '~/permissions/user';
 
 export function SideBar({ userRole }: { userRole?: UserRole }) {
   const navItems = getNavItems(userRole);

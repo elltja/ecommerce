@@ -58,7 +58,7 @@ function getProducts() {
       description: true,
       priceInCents: true,
       slug: true,
-      images: true,
+      images: { orderBy: { position: 'asc' } },
     },
   });
 }

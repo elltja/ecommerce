@@ -3,8 +3,8 @@ import { metadataSchema, ordersItemSchema } from '../schemas/stripe';
 
 export function validateMetadata(rawMetadata: Stripe.Metadata | null) {
   const metadata = metadataSchema.parse(rawMetadata);
-  const rawOrderItems = JSON.parse(metadata.orderItems) as unknown;
 
+  const rawOrderItems = JSON.parse(metadata.orderItems) as unknown;
   const customerId = metadata.customerId;
 
   try {

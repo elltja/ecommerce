@@ -1,6 +1,5 @@
 'use server';
 
-import { validateCartItems } from '~/lib/validators/cart';
 import { stripe } from '../stripe';
 import type Stripe from 'stripe';
 import { env } from '~/env';
@@ -11,6 +10,8 @@ import {
   shipping_address_collection,
   shipping_options,
 } from '../stripe/shipping';
+import { db } from '../db';
+import { checkoutItemsSchema } from '~/lib/schemas/stripe';
 
 export async function checkout(formData: unknown) {
   if (!(formData instanceof FormData)) {
@@ -24,19 +25,43 @@ export async function checkout(formData: unknown) {
 
   const rawItems = JSON.parse(itemsString) as unknown;
 
-  const items = validateCartItems(rawItems);
+  const items = checkoutItemsSchema.parse(rawItems);
 
-  const line_items = items.map((item) => ({
-    quantity: item.quantity,
-    price_data: {
-      unit_amount: item.product.priceInCents,
-      currency: 'usd',
-      product_data: {
-        name: item.product.title,
-        images: item.product.images.map((img) => img.url),
-      },
-    },
-  })) satisfies Stripe.Checkout.SessionCreateParams.LineItem[];
+  const line_items = (await Promise.all(
+    items.map(async (item) => {
+      const product = await db.product.findUnique({
+        where: { id: item.product.id },
+        include: { images: { orderBy: { position: 'asc' } } },
+      });
+
+      if (product == null) {
+        throw new Error('Product does not exist');
+      }
+      return {
+        quantity: item.quantity,
+        price_data: {
+          unit_amount: product.priceInCents,
+          currency: 'usd',
+          product_data: {
+            name: product.title,
+            images: product.images.map((img) => img.url),
+          },
+        },
+      };
+    }),
+  )) satisfies Stripe.Checkout.SessionCreateParams.LineItem[];
+
+  // const line_items = items.map((item) => ({
+  //   quantity: item.quantity,
+  //   price_data: {
+  //     unit_amount: item.product.priceInCents,
+  //     currency: 'usd',
+  //     product_data: {
+  //       name: item.product.title,
+  //       images: item.product.images.map((img) => img.url),
+  //     },
+  //   },
+  // })) satisfies Stripe.Checkout.SessionCreateParams.LineItem[];
 
   const userSession = await auth();
 
@@ -50,8 +75,9 @@ export async function checkout(formData: unknown) {
     billing_address_collection: 'required',
     mode: 'payment',
     success_url: `${env.NEXT_PUBLIC_BASE_URL}/success`,
-    cancel_url: `${env.NEXT_PUBLIC_BASE_URL}/checkout`,
+    cancel_url: `${env.NEXT_PUBLIC_BASE_URL}/cart`,
     ...(email ? { customer_email: email } : {}),
+    phone_number_collection: { enabled: true },
     metadata: {
       orderItems: JSON.stringify(
         items.map((item) => ({

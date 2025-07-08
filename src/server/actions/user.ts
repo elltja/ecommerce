@@ -3,7 +3,7 @@
 import type { UserRole } from '@prisma/client';
 import { db } from '../db';
 import { auth } from '../auth';
-import { canUpdateUserRole } from '~/permissions/users';
+import { canUpdateUserRole } from '~/permissions/user';
 
 export async function updateUserRole(userId: string, role: UserRole) {
   const session = await auth();

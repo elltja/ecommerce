@@ -8,12 +8,11 @@ export const metadataSchema = z.object({
 export const shippingInformationSchema = z.object({
   name: z.string().nullable().optional(),
   phone: z.string().nullable().optional(),
-  email: z.string(),
+  email: z.string().email(),
   shippingRate: z.object({
     name: z.string(),
-    amount: z.number(),
+    amount: z.number().nonnegative(),
   }),
-
   address: z.object({
     line1: z.string(),
     line2: z.string().nullable().optional(),
@@ -30,3 +29,12 @@ const orderItemSchema = z.object({
 });
 
 export const ordersItemSchema = z.array(orderItemSchema);
+
+export const checkoutItemsSchema = z.array(
+  z.object({
+    product: z.object({
+      id: z.string(),
+    }),
+    quantity: z.number(),
+  }),
+);
