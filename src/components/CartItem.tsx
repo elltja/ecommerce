@@ -1,6 +1,6 @@
 import { Button } from '@headlessui/react';
 import Image from 'next/image';
-import type { CartItem } from '~/lib/validators/cart';
+import type { CartItem } from '~/store/cartStore';
 import { useCartStore } from '~/store/cartStore';
 
 export function CartItem({ product, quantity }: CartItem) {

@@ -1,7 +1,8 @@
 import { getLocale } from 'next-intl/server';
+import { MostOrderedProducts } from '~/components/seller/dashboard/MostOrderedProducts';
 import { OrdersCard } from '~/components/seller/dashboard/OrdersCard';
-import { ProductsCard } from '~/components/seller/dashboard/ProductsCard';
 import { UsersCard } from '~/components/seller/dashboard/UsersCard';
+import { PageHeader } from '~/components/seller/PageHeader';
 import { redirect } from '~/i18n/navigation';
 import { auth } from '~/server/auth';
 
@@ -14,17 +15,19 @@ export default async function SellerPage() {
   }
   return (
     <>
-      <div className='flex w-full items-center justify-between px-10 py-4'>
-        <h1 className='mt-5 text-xl font-semibold'>
-          {session?.user.name
+      <PageHeader
+        title={
+          session?.user.name
             ? `Welcome Back ${session?.user.name}!`
-            : `Welcome Back!`}
-        </h1>
-      </div>
-      <div className='grid grid-cols-3 gap-20 px-20 py-10'>
-        <OrdersCard />
-        <UsersCard />
-        <ProductsCard />
+            : `Welcome Back!`
+        }
+      />
+      <div className='pt-5Z flex flex-col gap-10 px-20'>
+        <div className='mt-10 grid grid-cols-2 gap-20'>
+          <OrdersCard />
+          <UsersCard />
+        </div>
+        <MostOrderedProducts />
       </div>
     </>
   );

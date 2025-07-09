@@ -1,4 +1,3 @@
-import { notFound } from 'next/navigation';
 import { Benefits } from '~/components/Benefits';
 import { Features } from '~/components/Features';
 
@@ -10,15 +9,10 @@ import { db } from '~/server/db';
 export default async function HomePage() {
   const product = await getProduct();
 
-  if (product == null) {
-    return notFound();
-  }
   return (
     <div className='w-full max-w-screen overflow-x-hidden'>
       <Hero />
-
-      <ProductDisplay product={product} />
-
+      {product && <ProductDisplay product={product} />}
       <Features />
       <Benefits />
     </div>
@@ -27,7 +21,7 @@ export default async function HomePage() {
 
 function getProduct() {
   return db.product.findUnique({
-    where: { slug: env.NEXT_PUBLIC_MAIN_PRODUCT_SLUG as string },
+    where: { slug: env.NEXT_PUBLIC_MAIN_PRODUCT_SLUG },
     include: { images: { orderBy: { position: 'asc' } } },
   });
 }

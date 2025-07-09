@@ -1,6 +1,15 @@
+import type { ProductImage } from '@prisma/client';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { CartItem } from '~/lib/validators/cart';
+export type CartItem = {
+  quantity: number;
+  product: {
+    id: string;
+    priceInCents: number;
+    title: string;
+    images: ProductImage[];
+  };
+};
 
 interface CartStore {
   cart: CartItem[];
@@ -64,16 +73,18 @@ export const useCartStore = create<CartStore>()(
         });
       },
       clearCart: () => {
-        set({ cart: [] });
+        set({ cart: [], totalPrice: 0 });
       },
     }),
     { name: 'cart' },
   ),
 );
 
-function calculateTotalPrice(cart: CartItem[]) {
-  return cart.reduce((total, item) => {
-    console.log(item.quantity);
-    return total + (item.product.priceInCents * item.quantity) / 100;
-  }, 0);
+function calculateTotalPrice(cart: CartItem[]): number {
+  const totalPrice: number = cart.reduce(
+    (total: number, item: CartItem) =>
+      total + (item.product.priceInCents * item.quantity) / 100,
+    0,
+  );
+  return totalPrice;
 }

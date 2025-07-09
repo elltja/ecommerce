@@ -44,17 +44,17 @@ export async function OrdersCard() {
     >
       <div className='flex gap-5'>
         <div className='flex items-center gap-1'>
-          <span className='font-semibold'>{counts.PLACED ?? 0}</span>
+          <span className='mr-1 font-semibold'>{counts.PLACED ?? 0}</span>
           <OrderStausIndicator status='PLACED' />
           placed
         </div>
         <div className='flex items-center gap-1'>
-          <span className='font-semibold'>{counts.SHIPPED ?? 0}</span>
+          <span className='mr-1 font-semibold'>{counts.SHIPPED ?? 0}</span>
           <OrderStausIndicator status='SHIPPED' />
           shipped
         </div>
         <div className='flex items-center gap-1'>
-          <span className='font-semibold'>{counts.COMPLETED ?? 0}</span>
+          <span className='mr-1 font-semibold'>{counts.COMPLETED ?? 0}</span>
           <OrderStausIndicator status='COMPLETED' />
           completed
         </div>
