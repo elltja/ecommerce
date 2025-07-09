@@ -23,4 +23,8 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .auto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 384px);
+  }
 }

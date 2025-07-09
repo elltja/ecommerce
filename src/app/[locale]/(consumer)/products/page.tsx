@@ -1,22 +1,9 @@
-import { ProductCard } from '~/components/ProductCard';
-import { db } from '~/server/db';
+import { ProductsGrid } from '~/components/ProductsGrid';
 
 export default async function ProductsPage() {
-  const products = await getProducts();
-
   return (
-    <div className='flex w-full justify-center'>
-      <div className=''>
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+    <div className='flex h-screen w-full justify-center px-5 py-10 md:justify-start'>
+      <ProductsGrid />
     </div>
   );
-}
-
-async function getProducts() {
-  return db.product.findMany({
-    include: { images: true },
-  });
 }
