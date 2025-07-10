@@ -1,17 +1,19 @@
 import type { Prisma } from '@prisma/client';
 import Image from 'next/image';
 import { Link } from '~/i18n/navigation';
-import { ReviewStars } from './ReviewStart';
+import { ReviewStars } from './ReviewStars';
+import { getAvrageRating } from '~/lib/utils/getAvrageRating';
 
 export function ProductCard({
   product,
 }: {
   product: Prisma.ProductGetPayload<{
-    include: { images: true };
+    include: { images: true; reviews: true };
   }>;
 }) {
   const image = product.images[0];
   const priceInDollars = (product.priceInCents / 100).toFixed(2);
+  const rating = getAvrageRating(product.reviews);
 
   return (
     <Link href={`/products/${product.slug}`} passHref className='w-fit'>
@@ -23,7 +25,7 @@ export function ProductCard({
           />
         </div>
         <div className='flex flex-col gap-2'>
-          <ReviewStars />
+          <ReviewStars rating={rating} />
           <h3>{product.title}</h3>
           <p className='line-clamp-2 text-sm text-gray-500'>
             {product.description}

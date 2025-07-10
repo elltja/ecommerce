@@ -22,6 +22,6 @@ export default async function HomePage() {
 function getProduct() {
   return db.product.findUnique({
     where: { slug: env.NEXT_PUBLIC_MAIN_PRODUCT_SLUG },
-    include: { images: { orderBy: { position: 'asc' } } },
+    include: { images: { orderBy: { position: 'asc' } }, reviews: true },
   });
 }

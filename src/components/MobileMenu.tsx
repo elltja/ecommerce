@@ -43,7 +43,7 @@ function Actions() {
         aria-label='Open cart'
         className='hover:bg-primary/10 hover:text-primary focus:ring-primary flex items-center gap-2 rounded-md py-3 text-gray-700 transition-colors focus:ring-2 focus:outline-none'
       >
-        <Cart quantity={1} />
+        <Cart />
         <span className='text-sm font-medium'>Cart</span>
       </button>
     </nav>

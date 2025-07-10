@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { ProductDisplay } from '~/components/ProductDisplay';
 import { ProductsGrid } from '~/components/ProductsGrid';
+import { Reviews } from '~/components/Reviews';
 
 import { db } from '~/server/db';
 
@@ -17,10 +18,11 @@ export default async function ProductPage({
   }
 
   return (
-    <>
+    <div className='flex flex-col gap-10'>
       <ProductDisplay product={product} />
       <FeaturedProducts exclude={product.id} />
-    </>
+      <Reviews productId={product.id} reviews={product.reviews} />
+    </div>
   );
 }
 
@@ -43,6 +45,7 @@ function getProduct(slug: string) {
     where: { slug },
     include: {
       images: { orderBy: { position: 'asc' }, omit: { productId: true } },
+      reviews: { include: { user: { select: { name: true } } } },
     },
   });
 }

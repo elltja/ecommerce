@@ -26,7 +26,7 @@ async function getProducts({
   limit?: number;
 }) {
   return db.product.findMany({
-    include: { images: true },
+    include: { images: true, reviews: true },
     orderBy: { createdAt: 'asc' },
     where: {
       id: { notIn: exclude },

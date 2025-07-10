@@ -57,6 +57,7 @@ model User {
     sessions        Session[]
     createdProducts Product[]
     orders          Order[]   @relation("CustomerOrders")
+    reviews         Review[]
 
     @@map("users")
 }
@@ -83,6 +84,7 @@ model Product {
     createdBy  User           @relation(fields: [createdById], references: [id], onDelete: Cascade)
     images     ProductImage[]
     orderItems OrderItem[]
+    reviews    Review[]
 
     @@map("products")
 }
@@ -129,4 +131,16 @@ model OrderItem {
 
     product Product @relation(fields: [productId], references: [id])
     order   Order?  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model Review {
+    id        String   @id @default(cuid())
+    text      String
+    rating    Int
+    createdAt DateTime @default(now()) @map("created_at")
+    userId    String   @map("user_id")
+    productId String   @map("product_id")
+
+    user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
