@@ -1,6 +1,6 @@
 import { db } from '~/server/db';
 import { DashboardCard } from './DashboardCard';
-import { OrderStausIndicator } from '../OrderStatusIndicator';
+import { OrderStausIndicator } from '../orders/OrderStatusIndicator';
 import { List } from 'lucide-react';
 import type { OrderStatus } from '@prisma/client';
 

@@ -1,7 +1,7 @@
 import { Button } from '@headlessui/react';
 import { Suspense } from 'react';
 import { PageHeader } from '~/components/seller/PageHeader';
-import { ProductTableRow } from '~/components/seller/ProductTableRow';
+import { ProductTableRow } from '~/components/seller/products/ProductTableRow';
 import { TableSkeleton } from '~/components/seller/TableSkeleton';
 import { Link } from '~/i18n/navigation';
 import { db } from '~/server/db';

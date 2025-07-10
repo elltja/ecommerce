@@ -1,7 +1,7 @@
 'use client';
 
 import { Trash2Icon } from 'lucide-react';
-import { LoadingTextSwap } from './LoadingTextSwap';
+import { LoadingTextSwap } from '../LoadingTextSwap';
 import { useTransition } from 'react';
 import { deleteReview } from '~/server/actions/review';
 import { useRouter } from '~/i18n/navigation';

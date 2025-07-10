@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import { OrderedProducts } from '~/components/seller/OrderedProducts';
-import { OrderInformation } from '~/components/seller/OrderInformation';
+import { OrderedProducts } from '~/components/seller/orders/OrderedProducts';
+import { OrderInformation } from '~/components/seller/orders/OrderInformation';
 import { shippingInformationSchema } from '~/lib/schemas/stripe';
 import { db } from '~/server/db';
 

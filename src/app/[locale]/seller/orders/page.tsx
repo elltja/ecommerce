@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { OrderTableRow } from '~/components/seller/OrderTableRow';
+import { OrderTableRow } from '~/components/seller/orders/OrderTableRow';
 import { TableSkeleton } from '~/components/seller/TableSkeleton';
 import { db } from '~/server/db';
 

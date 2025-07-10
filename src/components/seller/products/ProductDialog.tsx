@@ -1,9 +1,9 @@
 'use client';
 import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import { useState, type ReactNode } from 'react';
-import { ProductForm } from './ProductForm/ProductForm';
+import { ProductForm } from '../ProductForm/ProductForm';
 import { useRouter } from '~/i18n/navigation';
-import type { InitialData } from './ProductForm/ProductForm.types';
+import type { InitialData } from '../ProductForm/ProductForm.types';
 
 export function ProductDialogTrigger({
   children,

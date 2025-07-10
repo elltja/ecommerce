@@ -1,6 +1,6 @@
 'use client';
 
-import { ProductForm } from '~/components/seller/products/ProductForm/ProductForm';
+import { ProductForm } from '~/components/seller/ProductForm/ProductForm';
 import { useRouter } from '~/i18n/navigation';
 
 export function ProductFormClientWrapper() {

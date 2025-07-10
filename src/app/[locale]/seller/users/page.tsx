@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { TableSkeleton } from '~/components/seller/TableSkeleton';
-import { UserTableRow } from '~/components/seller/UserTableRow';
+import { UserTableRow } from '~/components/seller/users/UserTableRow';
 import { db } from '~/server/db';
 
 export default function UsersPage() {
