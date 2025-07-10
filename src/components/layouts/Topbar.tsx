@@ -1,6 +1,6 @@
 import { User } from 'lucide-react';
 import { Logo } from '../Logo';
-import { MobileMenu } from '../MobileMenu';
+import { MobileMenu } from './MobileMenu';
 import { Link } from '~/i18n/navigation';
 import { LanguageSelector } from '../LanguageSelector';
 import { auth } from '~/server/auth';
