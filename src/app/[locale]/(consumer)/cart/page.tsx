@@ -2,6 +2,7 @@
 
 import { Button } from '@headlessui/react';
 import { ArrowRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import Form from 'next/form';
 import { useTransition } from 'react';
 import { CartItem } from '~/components/cart/CartItem';
@@ -16,6 +17,8 @@ export default function CartPage() {
 
   const [isPending, startTransition] = useTransition();
 
+  const t = useTranslations('cart');
+
   function checkout(formData: unknown) {
     startTransition(async () => {
       await checkoutAction(formData);
@@ -25,10 +28,10 @@ export default function CartPage() {
   if (cart.length < 1) {
     return (
       <div className='my-10 flex h-screen flex-col items-center gap-5'>
-        <h1 className='text-center text-xl'>Your cart is empty </h1>
+        <h1 className='text-center text-xl'>{t('emptyCartMessage')}</h1>
         <Link passHref href={`/products/${env.NEXT_PUBLIC_MAIN_PRODUCT_SLUG}`}>
           <Button className='bg-primary hover:bg-primary-hover text-bg flex w-fit cursor-pointer items-center gap-2 rounded-full px-4 py-2'>
-            Shop now <ArrowRight className='size-5' />
+            {t('shopNow')} <ArrowRight className='size-5' />
           </Button>
         </Link>
       </div>

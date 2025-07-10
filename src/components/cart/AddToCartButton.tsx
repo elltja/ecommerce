@@ -6,6 +6,7 @@ import { ShoppingCartIcon } from 'lucide-react';
 import { useCartStore } from '~/store/cartStore';
 import { AddedToCartDialog } from './AddedToCartDialog';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export function AddToCartButton({
   productData,
@@ -14,6 +15,7 @@ export function AddToCartButton({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const addToCart = useCartStore((state) => state.addToCart);
+  const t = useTranslations('product');
 
   return (
     <>
@@ -25,7 +27,7 @@ export function AddToCartButton({
         className='bg-primary hover:bg-primary-hover text-bg flex w-full cursor-pointer items-center justify-center gap-2 rounded-full py-3 text-lg font-semibold lg:max-w-2/3'
       >
         <ShoppingCartIcon className='text-bg' />
-        Add to cart
+        {t('addToCart')}
       </Button>
       <AddedToCartDialog isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>

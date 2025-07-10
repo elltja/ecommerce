@@ -1,6 +1,7 @@
 'use client';
 import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import { ArrowRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { Link } from '~/i18n/navigation';
 
 export function AddedToCartDialog({
@@ -10,6 +11,7 @@ export function AddedToCartDialog({
   isOpen: boolean;
   onClose: () => void;
 }) {
+  const t = useTranslations('product');
   return (
     <Dialog
       open={isOpen}
@@ -26,10 +28,10 @@ export function AddedToCartDialog({
             <div className='lg:mr-25'>
               <div className='mb-5'>
                 <DialogTitle className='text-lg font-semibold'>
-                  Successfully added to cart
+                  {t('addedToCartSuccessMessage')}
                 </DialogTitle>
                 <p className='mt-2 text-sm/6 text-gray-600'>
-                  The product was added to the cart.
+                  {t('addedToCartSuccessDescription')}
                 </p>
               </div>
               <div className='flex gap-2'>
@@ -37,11 +39,11 @@ export function AddedToCartDialog({
                   onClick={onClose}
                   className='cursor-pointer rounded-full border border-gray-200 px-4 py-2 hover:bg-gray-100'
                 >
-                  Continue sopping
+                  {t('continueShopping')}
                 </Button>
                 <Link href='/cart' passHref>
                   <Button className='bg-primary hover:bg-primary-hover text-bg flex cursor-pointer items-center gap-2 rounded-full px-4 py-2'>
-                    Go to cart <ArrowRight className='size-5' />
+                    {t('goToCart')} <ArrowRight className='size-5' />
                   </Button>
                 </Link>
               </div>

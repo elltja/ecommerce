@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { ProductDisplay } from '~/components/products/ProductDisplay';
 import { ProductsGrid } from '~/components/products/ProductsGrid';
@@ -27,11 +28,14 @@ export default async function ProductPage({
 }
 
 function FeaturedProducts({ exclude }: { exclude: string }) {
+  const t = useTranslations('product');
   return (
     <div className='w-full'>
       <div className='mx-auto w-fit md:mx-48'>
         <div className='w-full'>
-          <h2 className='my-10 text-2xl font-semibold'>Featured Products</h2>
+          <h2 className='my-10 text-2xl font-semibold'>
+            {t('featuredProducts')}
+          </h2>
         </div>
 
         <ProductsGrid exclude={[exclude]} limit={4} />

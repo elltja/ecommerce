@@ -1,6 +1,7 @@
 'use client';
 
 import { StarIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export function ReviewStars({
   rating,
@@ -9,6 +10,7 @@ export function ReviewStars({
   rating: number;
   onStarClick?: (starIndex: number) => void;
 }) {
+  const t = useTranslations('product');
   return (
     <div className='flex items-center gap-2'>
       <div className='flex items-center gap-0.5'>
@@ -28,7 +30,7 @@ export function ReviewStars({
           );
         })}
       </div>
-      <p>({rating || 'No Reviews'})</p>
+      <p>({rating || t('noReviews')})</p>
     </div>
   );
 }

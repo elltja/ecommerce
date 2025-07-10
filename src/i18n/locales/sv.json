@@ -63,5 +63,26 @@
       "placeholder": "du@example.com",
       "action": "Fortsätt"
     }
+  },
+  "product": {
+    "addToCart": "Lägg till i kundvagnen",
+    "featuredProducts": "Utvalda produkter",
+    "reviews": "Recensioner",
+    "writeAReview": "skriv en recension",
+    "noReviews": "Inga recensioner",
+    "addedToCartSuccessMessage": "Produkten har lagts till i kundvagnen",
+    "addedToCartSuccessDescription": "Välj nu mellan följande val:",
+    "continueShopping": "Fortsätt handla",
+    "goToCart": "Gå till kundvagnen"
+  },
+  "cart": {
+    "checkout": "Betala",
+    "total": "Totalt",
+    "emptyCartMessage": "Kundvagnen är tom",
+    "shopNow": "Fortsätt handla"
+  },
+   "orderSuccess": {
+    "title": "Din beställning är konfirmerad",
+    "description": "Du kommer att få en updatering inom kort. Tack för din beställning!"
   }
 }

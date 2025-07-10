@@ -63,5 +63,26 @@
         "placeholder": "you@example.com",
         "action": "Continue"
     }
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "featuredProducts": "Featured Products",
+    "reviews": "Reviews",
+    "writeAReview": "write a review",
+    "noReviews": "No Reviews",
+    "addedToCartSuccessMessage": "Successfully added to cart",
+    "addedToCartSuccessDescription": "The product was added to the cart.",
+    "continueShopping": "Continue shopping",
+    "goToCart": "Go to cart"
+  },
+  "cart": {
+    "checkout": "Checkout",
+    "total": "Total",
+    "emptyCartMessage": "Your cart is empty",
+    "shopNow": "Shop Now"
+  },
+   "orderSuccess": {
+    "title": "Your order is confirmed!",
+    "description": "You'll receive a shipping update shortly. Thank you for your purchase!"
   }
 }
