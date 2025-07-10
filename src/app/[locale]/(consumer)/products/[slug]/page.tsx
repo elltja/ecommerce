@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
-import { ProductDisplay } from '~/components/ProductDisplay';
-import { ProductsGrid } from '~/components/ProductsGrid';
-import { Reviews } from '~/components/Reviews';
+import { ProductDisplay } from '~/components/products/ProductDisplay';
+import { ProductsGrid } from '~/components/products/ProductsGrid';
+import { Reviews } from '~/components/reviews/Reviews';
 
 import { db } from '~/server/db';
 

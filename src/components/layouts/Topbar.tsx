@@ -1,12 +1,12 @@
 import { User } from 'lucide-react';
-import { Logo } from './Logo';
-import { MobileMenu } from './MobileMenu';
+import { Logo } from '../Logo';
+import { MobileMenu } from '../MobileMenu';
 import { Link } from '~/i18n/navigation';
-import { LanguageSelector } from './LanguageSelector';
+import { LanguageSelector } from '../LanguageSelector';
 import { auth } from '~/server/auth';
 import { canAccessSellerPages } from '~/permissions/general';
 import { Button } from '@headlessui/react';
-import { Cart } from './Cart';
+import { Cart } from '../cart/Cart';
 
 export function Topbar() {
   return (

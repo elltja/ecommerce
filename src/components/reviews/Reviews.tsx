@@ -1,5 +1,5 @@
 import type { Prisma } from '@prisma/client';
-import { Review } from './review';
+import { Review } from './Review';
 import { ReviewsHeader } from './ReviewsHeader';
 import { auth } from '~/server/auth';
 import { redirect } from '~/i18n/navigation';

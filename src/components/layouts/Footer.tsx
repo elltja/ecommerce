@@ -1,5 +1,5 @@
 import { ArrowRightIcon, Mail } from 'lucide-react';
-import { Logo } from './Logo';
+import { Logo } from '../Logo';
 import { Button } from '@headlessui/react';
 import type { ReactNode } from 'react';
 import { Link } from '~/i18n/navigation';

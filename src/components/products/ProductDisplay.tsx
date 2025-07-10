@@ -1,8 +1,8 @@
 import type { Prisma } from '@prisma/client';
 import { ProductImageDisplay } from './ProductImageDisplay';
-import { ReviewStars } from './ReviewStars';
-import { Separator } from './Separator';
-import { AddToCartButton } from './AddToCartButton';
+import { ReviewStars } from '../reviews/ReviewStars';
+import { Separator } from '../Separator';
+import { AddToCartButton } from '../cart/AddToCartButton';
 import { getAvrageRating } from '~/lib/utils/getAvrageRating';
 
 export function ProductDisplay({

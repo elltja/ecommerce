@@ -1,7 +1,7 @@
 import type { Prisma } from '@prisma/client';
 import Image from 'next/image';
 import { Link } from '~/i18n/navigation';
-import { ReviewStars } from './ReviewStars';
+import { ReviewStars } from '../reviews/ReviewStars';
 import { getAvrageRating } from '~/lib/utils/getAvrageRating';
 
 export function ProductCard({

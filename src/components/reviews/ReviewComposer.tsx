@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react';
 import { ReviewStars } from './ReviewStars';
 import { Button, Textarea } from '@headlessui/react';
-import { LoadingTextSwap } from './LoadingTextSwap';
+import { LoadingTextSwap } from '../LoadingTextSwap';
 import Form from 'next/form';
 import { createReview } from '~/server/actions/review';
 import { useRouter } from '~/i18n/navigation';

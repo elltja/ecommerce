@@ -1,8 +1,8 @@
-import { Benefits } from '~/components/Benefits';
-import { Features } from '~/components/Features';
+import { Benefits } from '~/components/sections/Benefits';
+import { Features } from '~/components/sections/Features';
 
-import { Hero } from '~/components/Hero';
-import { ProductDisplay } from '~/components/ProductDisplay';
+import { Hero } from '~/components/sections/Hero';
+import { ProductDisplay } from '~/components/products/ProductDisplay';
 import { env } from '~/env';
 import { db } from '~/server/db';
 

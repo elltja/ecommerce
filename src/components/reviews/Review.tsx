@@ -1,7 +1,7 @@
 import type { Prisma, Review } from '@prisma/client';
 import { ReviewStars } from './ReviewStars';
 
-import { DeleteReviewButton } from './DeleteReviewButton';
+import { DeleteReviewButton } from '../DeleteReviewButton';
 
 export function Review({
   data,

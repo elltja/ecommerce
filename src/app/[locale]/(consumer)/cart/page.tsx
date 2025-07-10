@@ -4,7 +4,7 @@ import { Button } from '@headlessui/react';
 import { ArrowRight } from 'lucide-react';
 import Form from 'next/form';
 import { useTransition } from 'react';
-import { CartItem } from '~/components/CartItem';
+import { CartItem } from '~/components/cart/CartItem';
 import { LoadingTextSwap } from '~/components/LoadingTextSwap';
 import { env } from '~/env';
 import { Link } from '~/i18n/navigation';

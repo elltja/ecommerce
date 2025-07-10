@@ -3,8 +3,8 @@ import type { ReactNode } from 'react';
 import { canAccessSellerPages } from '~/permissions/general';
 import { auth } from '~/server/auth';
 import { getLocale } from 'next-intl/server';
-import { SideBar } from '~/components/seller/Sidebar';
-import { TopBar } from '~/components/seller/Topbar';
+import { SideBar } from '~/components/seller/layouts/Sidebar';
+import { TopBar } from '~/components/seller/layouts/Topbar';
 
 export default async function SellerLayout({
   children,

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { MenuIcon, User } from 'lucide-react';
 import { Link } from '~/i18n/navigation';
 import { LanguageSelector } from './LanguageSelector';
-import { Cart } from './Cart';
+import { Cart } from './cart/Cart';
 
 export function MobileMenu({ className }: { className?: string }) {
   return (

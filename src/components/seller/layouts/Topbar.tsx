@@ -1,5 +1,5 @@
 import { Button } from '@headlessui/react';
-import { Logo } from '../Logo';
+import { Logo } from '../../Logo';
 import { signOut } from '~/server/auth';
 
 export function TopBar() {

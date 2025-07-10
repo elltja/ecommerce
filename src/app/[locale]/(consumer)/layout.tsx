@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import { TopBanner } from '~/components/Banner';
-import { Footer } from '~/components/Footer';
-import { Topbar } from '~/components/Topbar';
+import { TopBanner } from '~/components/layouts/Banner';
+import { Footer } from '~/components/layouts/Footer';
+import { Topbar } from '~/components/layouts/Topbar';
 
 export default async function ConsumerLayout({
   children,
