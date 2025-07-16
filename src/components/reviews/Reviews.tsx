@@ -2,8 +2,6 @@ import type { Prisma } from '@prisma/client';
 import { Review } from './Review';
 import { ReviewsHeader } from './ReviewsHeader';
 import { auth } from '~/server/auth';
-import { redirect } from '~/i18n/navigation';
-import { getLocale } from 'next-intl/server';
 import { canDeleteReview } from '~/permissions/review';
 
 export async function Reviews({
@@ -16,12 +14,6 @@ export async function Reviews({
   productId: string;
 }) {
   const session = await auth();
-  if (!session || !session.user) {
-    redirect({
-      href: '/account/auth',
-      locale: await getLocale(),
-    });
-  }
 
   return (
     <div className='w-full'>
